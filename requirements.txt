@@ -10,7 +10,7 @@ cheroot==10.0.1
 configobj==5.0.6
 cryptography==3.3.2
 dbus-python==1.2.16
-distro-info==1.0+deb11u1
+# distro-info==1.0+deb11u1
 docker==4.1.0
 docker-compose==1.25.0
 dockerpty==0.4.1
