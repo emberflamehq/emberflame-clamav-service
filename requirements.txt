@@ -6,7 +6,7 @@ cached-property==1.5.2
 certifi==2020.6.20
 chardet==4.0.0
 cheroot==10.0.1
-cloud-init==20.4.1
+# cloud-init==20.4.1
 configobj==5.0.6
 cryptography==3.3.2
 dbus-python==1.2.16
