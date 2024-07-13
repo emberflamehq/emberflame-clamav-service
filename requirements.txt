@@ -25,7 +25,7 @@ jsonpointer==2.0
 jsonschema==3.2.0
 MarkupSafe==1.1.1
 more-itertools==4.2.0
-multiav==0.1.0
+# multiav==0.1.0
 oauthlib==3.1.0
 promise==2.3
 psycopg2==2.9.9
