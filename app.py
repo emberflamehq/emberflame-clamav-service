@@ -43,6 +43,7 @@ async def scan(malware: UploadFile = File(...)) -> ClamAV:
             if "Known viruses:" in line:
                 clamav.known = line.split(": ")[1]
             if "Engine version:" in line:
+                print("engine", line)
                 clamav.engine = line.split(": ")[1]
         os.remove(file_location)
         return clamav
