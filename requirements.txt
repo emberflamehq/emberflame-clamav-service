@@ -37,7 +37,7 @@ PySimpleSOAP==1.16.2
 python-debian==0.1.39
 python-debianbts==3.1.0
 PyYAML==5.3.1
-reportbug==7.10.3+deb11u2
+# reportbug==7.10.3+deb11u2
 requests==2.25.1
 rwlock==0.0.7
 six==1.16.0
