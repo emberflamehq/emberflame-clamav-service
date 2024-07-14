@@ -33,7 +33,7 @@ pycurl==7.43.0.6
 PyJWT==1.7.1
 pyrsistent==0.15.5
 PySimpleSOAP==1.16.2
-python-apt==2.2.1
+# python-apt==2.2.1
 python-debian==0.1.39
 python-debianbts==3.1.0
 PyYAML==5.3.1
