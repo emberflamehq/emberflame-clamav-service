@@ -6,11 +6,11 @@ cached-property==1.5.2
 certifi==2020.6.20
 chardet==4.0.0
 cheroot==10.0.1
-cloud-init==20.4.1
+# cloud-init==20.4.1
 configobj==5.0.6
 cryptography==3.3.2
 dbus-python==1.2.16
-distro-info==1.0+deb11u1
+# distro-info==1.0+deb11u1
 docker==4.1.0
 docker-compose==1.25.0
 dockerpty==0.4.1
@@ -25,7 +25,7 @@ jsonpointer==2.0
 jsonschema==3.2.0
 MarkupSafe==1.1.1
 more-itertools==4.2.0
-multiav==0.1.0
+# multiav==0.1.0
 oauthlib==3.1.0
 promise==2.3
 psycopg2==2.9.9
