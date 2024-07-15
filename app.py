@@ -9,6 +9,7 @@ import os
 app = FastAPI()
 
 class ClamAV(BaseModel):
+    vendor: str = ""
     infected: Optional[bool] = None
     result: Optional[str] = ""
     engine: Optional[str] = ""
@@ -28,6 +29,7 @@ async def root():
 def scan(malware: UploadFile = File(...)) -> ClamAV:
     try:
         clamav = ClamAV()
+        clamav.vendor = "ClamAV"
         sanitized_filename = sanitize_filename(malware.filename)
         file_location = f"/malware/{uuid.uuid4()}-{sanitized_filename}"
         with open(file_location, "wb") as buffer:
