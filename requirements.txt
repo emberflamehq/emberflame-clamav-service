@@ -9,7 +9,7 @@ cheroot==10.0.1
 # cloud-init==20.4.1
 configobj==5.0.6
 cryptography==3.3.2
-dbus-python==1.2.16
+# dbus-python==1.2.16
 # distro-info==1.0+deb11u1
 docopt==0.6.2
 httplib2==0.18.1
