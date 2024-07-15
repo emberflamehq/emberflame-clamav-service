@@ -25,7 +25,7 @@ async def root():
     return {"message": "Hello World"}
 
 @app.post("/scan", response_model=ClamAV)
-async def scan(malware: UploadFile = File(...)) -> ClamAV:
+def scan(malware: UploadFile = File(...)) -> ClamAV:
     try:
         clamav = ClamAV()
         sanitized_filename = sanitize_filename(malware.filename)
