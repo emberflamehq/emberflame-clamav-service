@@ -34,7 +34,7 @@ def scan(malware: UploadFile = File(...)) -> ClamAV:
         file_location = f"/malware/{uuid.uuid4()}-{sanitized_filename}"
         with open(file_location, "wb") as buffer:
             shutil.copyfileobj(malware.file, buffer)
-        output = sp.getoutput(f"clamscan {file_location}")
+        output = sp.getoutput(f"clamscand {file_location}")
         
         result = output
         result_line_arr = result.split('\n')
