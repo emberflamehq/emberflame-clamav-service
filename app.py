@@ -34,7 +34,7 @@ def scan(malware: UploadFile = File(...)) -> ClamAV:
         file_location = f"/malware/{uuid.uuid4()}-{sanitized_filename}"
         with open(file_location, "wb") as buffer:
             shutil.copyfileobj(malware.file, buffer)
-        output = sp.getoutput(f"clamscand {file_location}")
+        output = sp.getoutput(f"clamdscan {file_location}")
         version_output = sp.getoutput(f"clamdscan --version")
         # Split the string by spaces and get the second element
         parts = version_output.split()
