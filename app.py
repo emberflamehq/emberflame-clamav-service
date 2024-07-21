@@ -35,12 +35,20 @@ def scan(malware: UploadFile = File(...)) -> ClamAV:
         with open(file_location, "wb") as buffer:
             shutil.copyfileobj(malware.file, buffer)
         output = sp.getoutput(f"clamscand {file_location}")
-        
+        version_output = sp.getoutput(f"clamdscan --version")
+        # Split the string by spaces and get the second element
+        parts = version_output.split()
+        if len(parts) >= 2:
+            version = parts[1].split('/')[0]
+            clamav.engine = version
+        else:
+            clamav.engine = "Version not found"
         result = output
         result_line_arr = result.split('\n')
         virus_result = result_line_arr[0].split(": ")[1].replace(" FOUND", "") or ""
         clamav.result = virus_result
         clamav.infected = "FOUND" in result_line_arr[0]
+        
         for line in result.splitlines():
             if "Known viruses:" in line:
                 clamav.known = line.split(": ")[1]
