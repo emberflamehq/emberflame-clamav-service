@@ -48,7 +48,7 @@ def scan(malware: UploadFile = File(...)) -> ClamAV:
                 print("engine", line)
                 clamav.engine = line.split(": ")[1]
         os.remove(file_location)
-        return clamav
+        return {clamav}
     except Exception as e:
         print(e)
         return {"error": str(e)}, 500
