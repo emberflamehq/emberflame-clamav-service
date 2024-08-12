@@ -32,8 +32,6 @@ RUN touch /opt/malice/UPDATED
 RUN mkdir -p /run/clamav \
 && chown clamav:clamav /run/clamav
 
-RUN clamd &
-
 # Add EICAR Test Virus File to malware folder
 # ADD https://raw.githubusercontent.com/fire1ce/eicar-standard-antivirus-test-files/master/eicar-test.txt /malware/EICAR
 
