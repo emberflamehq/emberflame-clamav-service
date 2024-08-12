@@ -1,4 +1,6 @@
 from fastapi import FastAPI, File, UploadFile
+from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
 import subprocess as sp
 from pydantic import BaseModel
 from typing import Optional
@@ -17,6 +19,9 @@ class ClamAV(BaseModel):
     updated: Optional[str] = ""
     error: Optional[str] = ""
 
+class PayloadHTTP(BaseModel):
+    clamav: ClamAV = None
+
 def sanitize_filename(filename: str) -> str:
     # Replace spaces with underscores
     return filename.replace(" ", "_")
@@ -26,7 +31,7 @@ async def root():
     return {"message": "Hello World"}
 
 @app.post("/scan", response_model=ClamAV)
-def scan(malware: UploadFile = File(...)) -> ClamAV:
+def scan(malware: UploadFile = File(...)) -> PayloadHTTP:
     try:
         clamav = ClamAV()
         clamav.vendor = "ClamAV"
@@ -56,7 +61,11 @@ def scan(malware: UploadFile = File(...)) -> ClamAV:
                 print("engine", line)
                 clamav.engine = line.split(": ")[1]
         os.remove(file_location)
-        return {"clamav": clamav}
+        print('payload', clamav)
+        payload = PayloadHTTP()
+        payload.clamav = clamav
+        resp = jsonable_encoder(payload)
+        return JSONResponse(content=resp)
     except Exception as e:
         print(e)
         return {"error": str(e)}, 500
